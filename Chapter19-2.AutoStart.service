@@ -1,0 +1,13 @@
+﻿[Unit]
+Description=Auto Launcher
+After=default.target
+
+[Service]
+Type=simple
+User=pi
+ExecStart=/bin/bash /home/pi/AutoStart/launcher.sh
+Restart=always
+StartLimitBurst=0
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,41 @@
+﻿set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim        "Vundle 경로 설정 및 초기화
+call vundle#begin()                      "Plugin 시작
+
+Plugin 'VundleVim/Vundle.vim'            "기본 번들
+
+"Plugin 추가 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Plugin 'davidhalter/jedi-vim'            "파이썬 자동완성 plugin
+let g:jedi#show_call_signatures=0        "설명창 1=활성, 0=비활성
+let g:jedi#popup_select_first="0"        "자동 완성 시 자동팝업 등장 않음
+let g:jedi#force_py_version=3            "파이쎤버젼 3=python3, 2=python2
+
+Plugin 'hynek/vim-python-pep8-indent'    "python 자동 들여쓰기 Plugin
+Plugin 'nvie/vim-flake8'                 "python 문법 검사
+"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+call vundle#end()                        "Plugin 종료
+filetype plugin indent on                "파이썬 자동 들여쓰기 on
+
+"vim 환경설정 -----------------------------------------------------------
+colo murphy                        "색상 설정
+syntax enable                      "syntax highlighting 
+set fileencodings=utf-8,euc-kr     "인코딩 설정
+set fencs=ucs-bom,utf-8,euc-kr     "한글 파일은 euc-kr, 유니코드는 유니코드
+set bs=indent,eol,start            "backspace 키 사용 가능하게 
+set number                         "줄번호 활성
+set mouse=a                        "마우스 사용
+set clipboard=unnamedplus          "텍스트를 클립보드에 복사
+set ts=4                           "Tab 크기를 4로 변경
+set autoindent                     "자동 들여쓰기
+set expandtab                      "Tab 대신 띄어쓰기로
+set shiftwidth=4                   ">> 또는 << 를 눌렀을 때 커서 움직임 크기 = 4
+set cursorline                     "커서있는 행 밑줄 
+set showmatch                      "매칭되는 괄호 표시: [], {}, () 
+set laststatus=2                   "아래쪽 바에 파일이름 표시
+set pastetoggle=<F3>               "붙여넣기모드 선택키
+let python_highlight_all = 1       "모든 파이썬 색상강조 활성
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
+

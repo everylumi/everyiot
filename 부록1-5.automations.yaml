@@ -1,0 +1,15 @@
+
+  - id: Switch_ON
+    alias: 스위치 ON 알림
+    trigger:
+      - platform: mqtt
+        topic: homenet/Switch1/state
+        payload: "ON"
+    condition:
+      - condition: time
+        after: '06:00:00'
+        before: '23:00:00'
+    action:
+      - service: notify.notify
+        data:
+          message: "Switch On"
