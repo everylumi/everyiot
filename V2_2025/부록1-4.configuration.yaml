@@ -1,0 +1,37 @@
+default_config:
+
+tts:
+  - platform: google_translate
+
+mqtt:
+  broker: 192.168.219.205
+  port: 1883
+  username: 'test'
+  password: 'test'  
+  discovery: true
+
+sensor:
+  - platform: mqtt
+    name: "Temperature"
+    state_topic: "homenet/Sensor1/temperature"
+    qos: 0
+    unit_of_measurement: "°C"
+        
+  - platform: mqtt
+    name: "Humidity"
+    state_topic: "homenet/Sensor1/humidity"
+    qos: 0
+    unit_of_measurement: "%"
+    icon: mdi:water-percent
+
+switch:
+  - platform: mqtt
+    name: "Switch"
+    state_topic: "homenet/Switch1/state"
+    command_topic: "homenet/Switch1/command" 
+    icon: mdi:power-plug   
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
